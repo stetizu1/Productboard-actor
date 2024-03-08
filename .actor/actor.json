@@ -1,0 +1,9 @@
+{
+	"actorSpecification": 1,
+	"name": "productboard-roadmap-scraper",
+	"title": "Productboard roadmap scraper",
+	"description": "Actor is scraping basic data from Productboard roadmap to a key-value store.",
+	"version": "0.0",
+	"input": "./input_schema.json",
+	"dockerfile": "./Dockerfile"
+}

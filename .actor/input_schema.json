@@ -1,0 +1,27 @@
+{
+    "title": "Productboard roadmap scraper",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "productboardRoadmapUrl": {
+            "title": "Productboard roadmap URL",
+            "type": "string",
+            "description": "URL of the Productboard roadmap.",
+            "editor": "textfield"
+        },
+        "userEmail": {
+            "title": "Productboard user email",
+            "type": "string",
+            "description": "Email for Productboard account used for access.",
+            "editor": "textfield"
+        },
+        "userPassword": {
+            "title": "Productboard user password",
+            "type": "string",
+            "description": "Password for Productboard account used for access.",
+            "editor": "textfield",
+            "isSecret": true
+        }
+    },
+    "required": ["productboardRoadmapUrl", "userEmail", "userPassword"]
+}
