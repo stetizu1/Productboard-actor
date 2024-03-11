@@ -1,8 +1,20 @@
-import { Response } from 'playwright';
+import { Page, Response } from 'playwright';
 import axios from 'axios';
 import log from '@apify/log';
 import { isArrayOfObjects, isObject } from './utils.js';
 import { FeatureData } from './types.js';
+import { loginSelectors } from './constants.js';
+
+export const handleLogin = async (page: Page, { userEmail, userPassword }: {
+    userEmail: string;
+    userPassword: string
+}) => {
+    await page.click(loginSelectors.emailInput);
+    await page.keyboard.type(userEmail);
+    await page.click(loginSelectors.passwordInput);
+    await page.keyboard.type(userPassword);
+    await page.click(loginSelectors.submitButton);
+};
 
 const isFeature = (test: Record<string, unknown>) => test.featureType === 'feature';
 const isSubfeature = (test: Record<string, unknown>) => test.featureType === 'subfeature';

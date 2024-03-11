@@ -1,7 +1,6 @@
 import { Actor } from 'apify';
 import { chromium } from 'playwright';
-import { getHandleDetailRequest, parseRequiredResponse, handleInitialRequest } from './handlers.js';
-import { login } from './login.js';
+import { getHandleDetailRequest, parseRequiredResponse, handleInitialRequest, handleLogin } from './handlers.js';
 import { isRoadmapInitialRequest, STORE_ID } from './constants.js';
 
 await Actor.init();
@@ -27,7 +26,7 @@ const page = await browser.newPage();
 await page.goto(productboardRoadmapUrl);
 await page.waitForLoadState('load');
 
-await login(page, { userEmail, userPassword });
+await handleLogin(page, { userEmail, userPassword });
 
 // catch initial request and get and store data
 await page.waitForResponse(async (response) => {
