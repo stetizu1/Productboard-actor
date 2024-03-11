@@ -2,6 +2,7 @@ import { Actor } from 'apify';
 import { chromium } from 'playwright';
 import { getHandleDetailRequest, parseRequiredResponse, handleInitialRequest, handleLogin } from './handlers.js';
 import { isRoadmapInitialRequest, STORE_ID } from './constants.js';
+import {FeatureData} from "./types.js";
 
 await Actor.init();
 
@@ -48,6 +49,13 @@ await page.waitForResponse(async (response) => {
     }));
     return true;
 });
+
+const output: Record<string, FeatureData | null> = {};
+await keyValueStore.forEachKey(async (key) => {
+    output[key] = await keyValueStore.getValue(key);
+});
+
+await Actor.setValue('OUTPUT', output);
 
 await browser.close();
 await Actor.exit();

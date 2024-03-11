@@ -152,7 +152,7 @@ export const handleInitialRequest = async (response: RequiredResponse): Promise<
 const getFeatureDetail = async ({ featureId, cookieHeader }:{featureId: string, cookieHeader: string}) => (await axios.get(`https://apify.productboard.com/api/features/${featureId}`, { headers: { Cookie: cookieHeader } })).data.feature;
 
 export const getHandleDetailRequest = ({ cookieHeader, featureItemsMap }: { cookieHeader: string, featureItemsMap: Record<string, FeatureData>}) => (
-    async ({ featureId }: { featureId: string }) => {
+    async ({ featureId }: { featureId: string }): Promise<FeatureData> => {
         const featureDetail = await getFeatureDetail({ featureId, cookieHeader });
 
         const subfeatures = featureItemsMap[featureId].features;

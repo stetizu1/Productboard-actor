@@ -1,5 +1,5 @@
 # What does Productboard roadmap scraper do?
-This scraper extracts data from Productboard roadmap to a key-value store (id -- feature).
+This scraper extracts data from Productboard roadmap to a key-value store (OUTPUT) as a map (id -- feature).
 Scraped feature data includes:
  - Feature name
  - Feature description
